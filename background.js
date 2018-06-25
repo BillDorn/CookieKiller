@@ -36,7 +36,7 @@ function clearCookies(tab) {
            let badgeColor, badgeText;
            if(removed.length == res.length) {
                badgeColor = "#32CD32";
-               badgeText = removed.length.toString();
+               badgeText = "-" + removed.length.toString();
            } else {
                console.warn("Failed to remove %d cookies(not found).", res.length - removed.length);
                badgeColor = null;
