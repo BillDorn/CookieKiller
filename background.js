@@ -1,4 +1,4 @@
-var timeoutId = 0;
+var timeoutIds = {};
 
 function removeCookie(cookie) {
     let protocol = (cookie.secure) ? "https://" : "http://";
@@ -15,10 +15,12 @@ function removeCookies(cookies) {
     return Promise.all(cookies.map(removeCookie));
 }
 
-function clearBadge() {
+function clearBadge(tabId) {
     browser.browserAction.setBadgeText({
-        text: null
+        text: null,
+        tabId: tabId
     });
+    delete timeoutIds[tabId];
 }
 
 function clearCookies(tab) {
@@ -40,13 +42,18 @@ function clearCookies(tab) {
                badgeColor = null;
                badgeText = "!";
            }
-           clearTimeout(timeoutId);
-           timeoutId = setTimeout(clearBadge, 1000);
+           let timeoutId = timeoutIds[tab.id];
+           if(timeoutId !== undefined) {
+               clearTimeout(timeoutId);
+           }
+           timeoutIds[tab.id] = setTimeout(clearBadge.bind(null, tab.id), 1000);
            browser.browserAction.setBadgeBackgroundColor({
-               color: badgeColor
+               color: badgeColor,
+               tabId: tab.id
            });
            browser.browserAction.setBadgeText({
-               text: badgeText
+               text: badgeText,
+               tabId: tab.id
            });
        });
     });
