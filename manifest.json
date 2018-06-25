@@ -1,0 +1,36 @@
+{
+  "description": "Clear the cookies of the current domain.",
+  "manifest_version": 2,
+  "name": "Cookie Killer",
+  "version": "1.0",
+  "author": "Bill Dorn",
+  "homepage_url": "https://github.com/billdorn",
+  "icons": {
+    "48": "icons/knife48.png",
+    "64": "icons/knife64.png",
+    "128": "icons/knife128.png"
+  },
+
+  "background": {
+    "scripts": [
+      "background.js",
+      "psl_util.js",
+      "psl_tree.js"
+    ]
+  },
+
+  "browser_action": {
+    "default_icon": {
+      "48": "icons/knife48.png",
+      "64": "icons/knife64.png",
+      "128": "icons/knife128.png"
+    },
+    "default_title": "Cookie Killer"
+  },
+
+  "permissions": [
+    "tabs",
+    "<all_urls>",
+    "cookies"
+  ]
+}
