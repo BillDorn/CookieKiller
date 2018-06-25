@@ -2,7 +2,7 @@
   "description": "Clear the cookies of the current domain.",
   "manifest_version": 2,
   "name": "Cookie Killer Plus",
-  "version": "1.0",
+  "version": "1.1",
   "author": "Bill Dorn",
   "homepage_url": "https://github.com/billdorn/cookiekiller",
   "icons": {
