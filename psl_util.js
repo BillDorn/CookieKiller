@@ -8,6 +8,7 @@ function getBaseDomain(domain) {
     let domainArray = domain.split(".");
     bestIndex = domainArray.length-1;
     traverse(PSL_TREE, domainArray.length-1, domainArray);
+    bestIndex = bestIndex < 0 ? 0 : bestIndex;
     return domainArray.slice(bestIndex, domainArray.length).join(".");
 }
 
